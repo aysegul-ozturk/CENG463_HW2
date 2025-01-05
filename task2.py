@@ -86,5 +86,8 @@ def classify_text_gpt3(speech):
     return response["choices"][0]["text"].strip()
 
 for index, row in tokenized_test_data.iterrows():
+    print(classify_text_gpt3(row['text_en']))
+
+for index, row in Dataset.from_pandas(test_data).map(preprocess_data, batched=True).iterrows():
     print(classify_text_gpt3(row['text']))
 
